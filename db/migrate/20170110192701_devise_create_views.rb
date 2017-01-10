@@ -2,6 +2,7 @@ class DeviseCreateViews < ActiveRecord::Migration[5.0]
   def change
     create_table :views do |t|
       ## Database authenticatable
+      t.string :username
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
