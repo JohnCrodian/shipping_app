@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'profiles/index'
+
+  get 'profiles/new'
+
+  get 'profiles/show'
+
+  get 'profiles/create'
+
+  get 'profiles/update'
+
+  get 'profiles/edit'
+
+  get 'profiles/destroy'
+
   get 'static_pages/home'
 
   get 'static_pages/about'
@@ -7,35 +21,9 @@ Rails.application.routes.draw do
 
   get 'static_pages/help'
 
-  get 'jobs/index'
-
-  get 'jobs/new'
-
-  get 'jobs/show'
-
-  get 'jobs/create'
-
-  get 'jobs/edit'
-
-  get 'jobs/update'
-
-  get 'jobs/destroy'
-
-  get 'boats/index'
-
-  get 'boats/new'
-
-  get 'boats/show'
-
-  get 'boats/create'
-
-  get 'boats/edit'
-
-  get 'boats/update'
-
-  get 'boats/destroy'
+  resources :jobs, :boats, :profiles
 
   devise_for :views
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
