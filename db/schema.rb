@@ -10,7 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110192701) do
+ActiveRecord::Schema.define(version: 20170110203027) do
+
+  create_table "boats", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.integer  "capacity"
+    t.string   "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "boats_jobs", force: :cascade do |t|
+    t.integer "job_id"
+    t.integer "boat_id"
+    t.index ["boat_id"], name: "index_boats_jobs_on_boat_id"
+    t.index ["job_id"], name: "index_boats_jobs_on_job_id"
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "description"
+    t.string   "origin"
+    t.string   "destination"
+    t.float    "cost"
+    t.integer  "cont_needed"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -30,6 +57,7 @@ ActiveRecord::Schema.define(version: 20170110192701) do
   end
 
   create_table "views", force: :cascade do |t|
+    t.string   "username"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
