@@ -1,0 +1,11 @@
+<div class="boat-container">
+	<% @jobs.each do |job| %>
+		<div class="boat-card">
+			<h4><a href="/jobs/<%= job.id %>">Job Number: <%= job.id %></a></h4>
+			<h4>Cost: <%= job.cost %></h4>
+			<h4>Containers Required: <%= job.cont_needed %></h4>
+			<h4>Origin: <%= job.origin %></h4>
+			<h4>Destination: <%= job.destination %></h4>
+		</div>
+	<% end %>
+</div>

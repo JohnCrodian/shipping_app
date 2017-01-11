@@ -9,7 +9,14 @@ class ProfilesController < ApplicationController
   end
 
   def show
+<<<<<<< HEAD
     @boats = Boat.all
+=======
+    # @user = User.find_by(params[:id])
+    @user = current_user
+    @boats = Boat.all
+    @jobs = Job.all
+>>>>>>> jobs
   end
 
   def create
