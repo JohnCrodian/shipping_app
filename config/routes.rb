@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  root 'static_pages#home'
   get 'profiles/index'
 
   get 'profiles/new'
@@ -12,8 +14,6 @@ Rails.application.routes.draw do
   get 'profiles/edit'
 
   get 'profiles/destroy'
-
-  get 'static_pages/home'
 
   get 'static_pages/about'
 
