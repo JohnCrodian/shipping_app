@@ -9,6 +9,26 @@
   </head>
 
   <body>
+   <div class="top-container" id="banner-color">
+  <nav>
+	<div class="nav-div">
+		<ul>
+		  <li><a href="/"> Hercules World Wide Shippin</a></li>	
+		  <li><a href="/">Home</a></li>
+		  <li><a href="/static_pages/about">About</a></li>
+		  <li><a href="/static_pages/contact">Contact</a></li>
+      <% if (!current_user) %>
+  		  <li><a href="/users/sign_in"><button>Log In</button></a></li>
+  		  <li><a href="/users/sign_up"><button> SIGN UP</button></a></li>
+      <% else %>
+        <li><a href="/profiles/<%= current_user.id %>"><button>Your Page</button></a></li>
+        <li><button> <%= link_to "Log out", destroy_user_session_path, method: :delete, data: { confirm: "You sure?" } %></button></li>
+      <% end %>
+		</ul>
+
+	</div>
+  </nav>
+</div>
     <%= yield %>
   </body>
 </html>
