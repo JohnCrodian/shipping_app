@@ -23,10 +23,8 @@
 
 		<% cities = ["Houston", "New York", "Singapore", "Rotterdam", "Hamburg", "Rio de Janeiro", "Lagos", "Shanghai", "Tokyo", "London"] %>
 
-		<% cities.each do |city| %>
-		  <%= f.radio_button :location, city %>
-		  <%= f.label :location, value: city %><br>
-		<% end %>
+		<%= f.select(:location, options_for_select(cities)) %>
+		<br>
 
 		<%= f.submit "Add Boat" %>
 
