@@ -2,6 +2,8 @@ class Boat < ApplicationRecord
 	belongs_to :user
 	has_and_belongs_to_many :jobs
 
+	validates :name, uniqueness: true
+
 	# def cities
 	# 	attr_accessor :cities
 

@@ -3,12 +3,42 @@
   <head>
     <title>ShippingApp</title>
     <%= csrf_meta_tags %>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
-  </body>
+ <body>
+  <div class="top-container" id="banner-color container">
+	  <nav>
+			<div class="nav-div">
+				<ul>
+				  <li><a href="/"> Hercules World Wide Shippin</a></li>	
+				  <li><a href="/">Home</a></li>
+				  <li><a href="/static_pages/about">About</a></li>
+				  <li><a href="/static_pages/contact">Contact</a></li>
+		      <% if (!current_user) %>
+		  		  <li><a href="/users/sign_in"><button>Log In</button></a></li>
+		  		  <li><a href="/users/sign_up"><button> SIGN UP</button></a></li>
+		      <% else %>
+		        <li><a href="/profiles/<%= current_user.id %>"><button>Your Page</button></a></li>
+		        <li><button> <%= link_to "Log out", destroy_user_session_path, method: :delete, data: { confirm: "You sure?" } %></button></li>
+		      <% end %>
+				</ul>
+
+			</div>
+	  </nav>
+	</div>
+	<div class="flash-notice-div row">
+		<div class="col-md-4"> </div>
+		<div class="col-md-4 notice">
+			<% flash.each do |name, msg| -%>
+			  <%= content_tag :div, msg, class: name %>
+			<% end -%>
+		</div>
+	</div>
+<%= yield %>
+</body>
 </html>

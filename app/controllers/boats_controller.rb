@@ -19,6 +19,7 @@ class BoatsController < ApplicationController
 
     if @boat.save
       redirect_to @boat
+      flash[:notice] = "Boat created!"
     else
       render :new
     end
