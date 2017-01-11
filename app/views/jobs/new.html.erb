@@ -1,2 +1,32 @@
 <h1>Jobs#new</h1>
 <p>Find me in app/views/jobs/new.html.erb</p>
+
+<h2>Add a new job</h2>
+
+<div>
+	<%= form_for @job do |f| %>
+
+		<%= f.hidden_field :user_id%>
+		
+		<%= f.label :description, value: "Job Description" %>
+		<%= f.text_field :description %><br>
+
+		<%= f.label :cont_needed, value: "Containers Required " %>
+		<%= f.text_field :cont_needed %><br>
+
+		<%= f.label :origin, value: "Origin: " %><br>
+
+		<% cities = ["Houston", "New York", "Singapore", "Rotterdam", "Hamburg", "Rio de Janeiro", "Lagos", "Shanghai", "Tokyo", "London"] %>
+
+		<%= f.select(:origin, options_for_select(cities)) %>
+		<br>
+
+		<%= f.label :destination, value: "Destination: " %><br>
+
+		<%= f.select(:destination, options_for_select(cities)) %>
+		<br>
+
+		<%= f.submit "Add Job" %>
+
+	<% end %>
+</div>
