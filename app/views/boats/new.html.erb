@@ -3,6 +3,14 @@
 <div>
 	<%= form_for @boat do |f| %>
 
+		<% if @boat.errors.any? %>
+			<ul>
+		      <% @boat.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		      <% end %>
+		    </ul>
+		<% end %>
+
 		<%= f.hidden_field :user_id%>
 		
 		<%= f.label :name, value: "Name: " %>
