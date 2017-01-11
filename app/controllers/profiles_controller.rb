@@ -3,15 +3,12 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    # @user = User.all
   end
 
   def new
   end
 
   def show
-    # @user = User.find_by(params[:id])
-    @username = current_user.username
     @boats = Boat.all
   end
 
