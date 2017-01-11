@@ -6,6 +6,14 @@
 <div>
 	<%= form_for @job do |f| %>
 
+		<% if @job.errors.any? %>
+			<ul>
+		      <% @job.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		      <% end %>
+		    </ul>
+		<% end %>
+
 		<%= f.hidden_field :user_id%>
 		
 		<%= f.label :description, value: "Job Description" %>
