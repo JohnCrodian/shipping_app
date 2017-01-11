@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
 
   def show
     # @user = User.find_by(params[:id])
-    @user = current_user
+    @username = current_user.username
     @boats = Boat.all
   end
 
