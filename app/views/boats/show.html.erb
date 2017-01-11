@@ -1,2 +1,7 @@
-<h1>Boats#show</h1>
-<p>Find me in app/views/boats/show.html.erb</p>
+<div class="boat-container">
+	<h2 class="boat-name">Boat Name: <%= @boat.name %></h2>
+	<h4 class="boat-capacity">Container Capacity: <%= @boat.capacity %></h4>
+	<h4 class="boat-location">Location: <%= @boat.location %></h4>
+</div>
+
+<%= link_to "Edit Boat", edit_boat_path %>

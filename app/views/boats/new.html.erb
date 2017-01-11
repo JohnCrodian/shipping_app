@@ -1,2 +1,26 @@
-<h1>Boats#new</h1>
-<p>Find me in app/views/boats/new.html.erb</p>
+<h2>Add a new boat</h2>
+
+<div>
+	<%= form_for @boat do |f| %>
+
+		<%= f.hidden_field :user_id%>
+		
+		<%= f.label :name, value: "Name: " %>
+		<%= f.text_field :name %><br>
+
+		<%= f.label :capacity, value: "Container Capacity: " %>
+		<%= f.text_field :capacity %><br>
+
+		<%= f.label :location, value: "Location: " %><br>
+
+		<% cities = ["Houston", "New York", "Singapore", "Rotterdam", "Hamburg", "Rio de Janeiro", "Lagos", "Shanghai", "Tokyo", "London"] %>
+
+		<% cities.each do |city| %>
+		  <%= f.radio_button :location, city %>
+		  <%= f.label :location, value: city %><br>
+		<% end %>
+
+		<%= f.submit "Add Boat" %>
+
+	<% end %>
+</div>

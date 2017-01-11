@@ -1,2 +1,27 @@
-<h1>Boats#edit</h1>
-<p>Find me in app/views/boats/edit.html.erb</p>
+<h2>Edit boat</h2>
+<div>
+	<%= form_for @boat do |f| %>
+		
+		<%= f.label :name, value: "Name: " %>
+		<%= f.text_field :name %><br>
+
+		<%= f.label :capacity, value: "Container Capacity: " %>
+		<%= f.text_field :capacity %><br>
+
+		<%= f.label :location, value: "Location: " %><br>
+
+		<% cities = ["Houston", "New York", "Singapore", "Rotterdam", "Hamburg", "Rio de Janeiro", "Lagos", "Shanghai", "Tokyo", "London"] %>
+
+		<% cities.each do |city| %>
+		  <%= f.radio_button :location, city %>
+		  <%= f.label :location, value: city %><br>
+		<% end %>
+
+		<%= f.submit "Save Changes" %>
+
+	<% end %>
+</div>
+
+<p>
+	<%= link_to "Delete Boat", @boat, method: :delete, data: { confirm: "Are you sure?" } %>
+</p>
