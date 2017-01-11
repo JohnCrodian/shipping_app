@@ -1,4 +1,7 @@
 class ProfilesController < ApplicationController
+
+  before_action :authenticate_user!
+
   def index
     # @user = User.all
   end
@@ -8,6 +11,8 @@ class ProfilesController < ApplicationController
 
   def show
     # @user = User.find_by(params[:id])
+    @user = current_user
+    @boats = Boat.all
   end
 
   def create
