@@ -67,7 +67,7 @@
 						  <%= check_box(boat.id, "id") %>
 					</div>
 				<% end %>
-				<%= f.submit "UPDATE" %>
+				<%= f.submit "UPDATE", {remote: true} %>
 
 			<% end %>
 		</div>

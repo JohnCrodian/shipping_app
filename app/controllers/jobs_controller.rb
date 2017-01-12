@@ -59,7 +59,7 @@ class JobsController < ApplicationController
     end
     @job.update(job_params)
     @job.update(cont_present: total_cont)
-    redirect_to @job
+    # redirect_to "edit_job_path"
   end
 
   def destroy
