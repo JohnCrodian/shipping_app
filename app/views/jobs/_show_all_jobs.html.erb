@@ -12,6 +12,10 @@
 			 <% job.boats.each do |boat| %>
 			 <%= boat.name %>
 			 <% end %>
+			<a href="/jobs/<%= job.id %>/edit"><button>EDIT JOB</button></a>
+<!-- 			<button>
+				<%= link_to "Edit Job", edit_job_path %>
+			</button> -->
 		</div>
 	<% end %>
 </div>

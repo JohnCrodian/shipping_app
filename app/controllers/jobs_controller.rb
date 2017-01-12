@@ -20,7 +20,7 @@ class JobsController < ApplicationController
     @job.cont_present = 0
     @boats = Boat.all
     total_cont = 0
-    (1..@boats.length).each do |i|
+    (1..@boatsavail.length).each do |i|
      if (params["#{i}"]["id"] == "1")
        @boat = Boat.find(i)
        total_cont += @boat.capacity
@@ -36,10 +36,29 @@ class JobsController < ApplicationController
   end
 
   def edit
+    @job = Job.find(params[:id])
+    boatsall = Boat.all
+    boatsjob = @job.boats
+    @boatsavail = boatsall - boatsjob
   end
 
   def update
+    total_cont = @job.cont_present
+    boatsall = Boat.all
+    boatsjob = @job.boats
+    @boatsavail = boatsall - boatsjob
+    (0..@boatsavail.length-1).each do |i|
+      #the id's in the boatsavail array does not line up the check box numbers
+       boat = @boatsavail[i]
+       j = boat.id
+       if (params["#{j}"]["id"] == "1")
+         @boat = Boat.find(j)
+         total_cont += @boat.capacity
+         @job.boats.push(@boat)
+       end
+    end
     @job.update(job_params)
+    @job.update(cont_present: total_cont)
     redirect_to @job
   end
 
@@ -49,7 +68,7 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:user_id, :jobname, :description, :origin, :destination, :cost, :cont_needed)
+    params.require(:job).permit(:user_id, :jobname, :description, :origin, :destination, :cost, :cont_needed, :cont_present)
   end
 
   def set_job
