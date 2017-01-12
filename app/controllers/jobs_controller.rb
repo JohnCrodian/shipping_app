@@ -7,6 +7,7 @@ class JobsController < ApplicationController
 
   def new
     @job = Job.new
+    @boats = Boat.all
   end
 
   def show
@@ -16,7 +17,17 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
     @job.user_id = current_user.id
-
+    @job.cont_present = 0
+    @boats = Boat.all
+    total_cont = 0
+    (1..@boats.length).each do |i|
+     if (params["#{i}"]["id"] == "1")
+       @boat = Boat.find(i)
+       total_cont += @boat.capacity
+       @job.boats.push(@boat)
+     end
+    end
+    @job.cont_present = total_cont
     if @job.save
       redirect_to @job
     else
@@ -37,8 +48,8 @@ class JobsController < ApplicationController
 
   private
 
-   def job_params
-    params.require(:job).permit(:user_id, :description, :origin, :destination, :cost, :cont_needed)
+  def job_params
+    params.require(:job).permit(:user_id, :jobname, :description, :origin, :destination, :cost, :cont_needed)
   end
 
   def set_job
