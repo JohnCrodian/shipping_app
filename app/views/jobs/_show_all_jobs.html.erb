@@ -7,5 +7,9 @@
 			<h4>Origin: <%= job.origin %></h4>
 			<h4>Destination: <%= job.destination %></h4>
 		</div>
+		<%= form_for job do |f| %>
+		<%= f.select(:boats, Boat.all.collect {|b| [b.name, b.id]}) %>
+		<%= f.submit "Add Boat to Job" %>
+		<% end %>
 	<% end %>
 </div>
