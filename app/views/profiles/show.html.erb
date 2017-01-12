@@ -1,7 +1,10 @@
 <h2><%= @user.username %>'s Profile</h2>
 
+<a href="/users/edit"><button>EDIT ACCOUNT</button></a>
 
 <h3>My Boats</h3>
+
 <%= render '/boats/show_all_boats' %>
 
+<a href="/boats/new"><button>ADD BOAT</button></a>
 <h3>My Jobs</h3>
