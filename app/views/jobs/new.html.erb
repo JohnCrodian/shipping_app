@@ -6,6 +6,14 @@
 <div>
 	<%= form_for @job do |f| %>
 
+		<% if @job.errors.any? %>
+			<ul>
+		      <% @job.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		      <% end %>
+		    </ul>
+		<% end %>
+
 		<%= f.hidden_field :user_id%>
 		
 		<%= f.label :description, value: "Job Description" %>
@@ -13,6 +21,9 @@
 
 		<%= f.label :cont_needed, value: "Containers Required " %>
 		<%= f.text_field :cont_needed %><br>
+
+		<%= f.label :cost, value: "Cost" %>
+		<%= f.text_field :cost %><br>
 
 		<%= f.label :origin, value: "Origin: " %><br>
 

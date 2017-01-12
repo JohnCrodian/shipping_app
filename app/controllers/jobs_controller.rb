@@ -10,13 +10,14 @@ class JobsController < ApplicationController
   end
 
   def show
+    @jobs = Job.all
   end
 
   def create
     @job = Job.new(job_params)
     @job.user_id = current_user.id
 
-    if @job.save #Ask Mia to explain what this is doing
+    if @job.save
       redirect_to @job
     else
       render :new
