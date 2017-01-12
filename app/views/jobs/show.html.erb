@@ -6,7 +6,24 @@
 	<h4>Descripton: <%= @job.description %></h4>
 	<h4>Cost: <%= @job.cost %></h4>
 	<h4>From <%= @job.origin %> to <%= @job.destination %>
+<<<<<<< HEAD
 	<h4>Containers Needed <%= @job.cont_needed %></h4>
 </div>
 
 <%= link_to "Edit Job", edit_job_path %>
+=======
+	<h4 class="boat-location">Containers Needed <%= @job.cont_needed %></h4>
+	<h4>Containers Assigned <%= @job.cont_present %></h4>
+	<h4>Boats Assigned </h4>
+	  <% @job.boats.each do |boat| %>
+	    <%= boat.name %> <br>
+	  <% end %>
+</div>
+
+<button>
+<%= link_to "Edit Job", edit_job_path %>
+</button>
+<button>
+<%= link_to "My profile", profile_path %>
+</button>
+>>>>>>> acf377f8efba6fb181c1971434848fa98fed5140

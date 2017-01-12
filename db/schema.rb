@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110203027) do
+ActiveRecord::Schema.define(version: 20170112154906) do
 
   create_table "boats", force: :cascade do |t|
     t.integer  "user_id"
@@ -35,8 +35,10 @@ ActiveRecord::Schema.define(version: 20170110203027) do
     t.string   "destination"
     t.float    "cost"
     t.integer  "cont_needed"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "jobname"
+    t.integer  "cont_present"
   end
 
   create_table "users", force: :cascade do |t|

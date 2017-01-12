@@ -14,3 +14,14 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$(document).ready(function() {
+   var boats = ($('#tracker-boats').data('trackers'));
+   var job = ($('#tracker-job').data('trackers'));   
+   console.log(boats);
+   console.log(job);
+   // $("update-job-btn").on("ajax:complete", function(event) {
+   //   $(event.target).hide();
+   // $(event.target).prev.addClass("available").html("Available");
+   // });
+})
+
