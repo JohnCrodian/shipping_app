@@ -63,6 +63,9 @@ class JobsController < ApplicationController
   end
 
   def destroy
+    Job.find(params[:id]).destroy
+    flash[:success] = "order deleted"
+    redirect_to "profiles_show_path"
   end
 
   private

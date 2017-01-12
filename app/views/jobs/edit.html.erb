@@ -12,8 +12,12 @@
 			<h4 class="boat-location">Containers Assigned <%= @job.cont_present %></h4>
 			<h4>Boats Assigned</h4>
 			<% @job.boats.each do |boat| %>
-			   <%= boat.name %> <br>
+			   <%= boat.name %> <%= boat.capacity %><br>
 			<% end %>
+			<%= content_tag :div, id: 'tracker-boats', data: {trackers: @job.boats.to_json } do %>
+			<% end %>
+			<%= content_tag :div, id: 'tracker-job', data: {trackers: @job.to_json } do %>
+ 			<% end %>
 		</div>
 
 		<div class="col-md-6">
@@ -67,7 +71,7 @@
 						  <%= check_box(boat.id, "id") %>
 					</div>
 				<% end %>
-				<%= f.submit "UPDATE", {remote: true} %>
+				<%= f.submit "UPDATE", {remote: true, class: "update-job-btn"} %>
 
 			<% end %>
 		</div>
