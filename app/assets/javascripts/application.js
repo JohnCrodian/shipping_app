@@ -16,9 +16,24 @@
 //= require_tree .
 $(document).ready(function() {
    var boats = ($('#tracker-boats').data('trackers'));
-   var job = ($('#tracker-job').data('trackers'));   
-   console.log(boats);
+   var job = ($('#tracker-job').data('trackers')); 
+   console.log(boats[0].name);
    console.log(job);
+   $(".update-job-btn").on("ajax:complete", function() {
+   	   console.log("Hello world");
+	   var boats = ($('#tracker-boats').data('trackers'));
+	   var job = ($('#tracker-job').data('trackers')); 
+	   console.log(boats[1].name);
+	   console.log(job);
+	   // var newdiv = $("<div></div>");
+	   // newdiv.addClass("new-boat-list"); 
+	   // for (var i = 0; i < boats.length; i++) {
+	   //   var newtext = $("<p></p>");
+	   //   newtext.innerHTML = boats[i].name;
+	   //   newtext.appendTo(".new-boat-list");
+	   //  } 
+   //$(".boat-list").replaceWith($(".new-boat-list"));
+   })
    // $("update-job-btn").on("ajax:complete", function(event) {
    //   $(event.target).hide();
    // $(event.target).prev.addClass("available").html("Available");
