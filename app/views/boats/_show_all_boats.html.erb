@@ -4,6 +4,13 @@
 			<h4 class="boat-name"><a href="/boats/<%= boat.id %>">Boat Name: <%= boat.name %></a></h4>
 			<h4 class="boat-capacity">Container Capacity: <%= boat.capacity %></h4>
 			<h4 class="boat-location">Location: <%= boat.location %></h4>
+			<button>
+				<%= link_to "Edit Boat", edit_boat_path(boat) %>
+					
+			</button>
+			<button>
+				<%= link_to "Delete Boat", boat, method: :delete, data: { confirm: "Are you sure?" } %>
+			</button>
 		</div>
 	<% end %>
 </div>

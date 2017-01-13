@@ -18,7 +18,9 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
     @job.user_id = current_user.id
     @job.cont_present = 0
-    @boats = Boat.all
+    boatsall = Boat.all
+    boatsjob = @job.boats
+    @boatsavail = boatsall - boatsjob
     total_cont = 0
     (1..@boatsavail.length).each do |i|
      if (params["#{i}"]["id"] == "1")
