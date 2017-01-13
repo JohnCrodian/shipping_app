@@ -18,11 +18,9 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
     @job.user_id = current_user.id
     @job.cont_present = 0
-    boatsall = Boat.all
-    boatsjob = @job.boats
-    @boatsavail = boatsall - boatsjob
+    @boats = Boat.all
     total_cont = 0
-    (1..@boatsavail.length).each do |i|
+    (1..@boats.length).each do |i|
      if (params["#{i}"]["id"] == "1")
        @boat = Boat.find(i)
        total_cont += @boat.capacity
@@ -31,7 +29,7 @@ class JobsController < ApplicationController
     end
     @job.cont_present = total_cont
     if @job.save
-      redirect_to @job
+      redirect_to profiles_show_path
     else
       render :new
     end
@@ -67,7 +65,7 @@ class JobsController < ApplicationController
   def destroy
     Job.find(params[:id]).destroy
     flash[:success] = "order deleted"
-    redirect_to "profiles_show_path"
+    redirect_to profiles_show_path
   end
 
   private
