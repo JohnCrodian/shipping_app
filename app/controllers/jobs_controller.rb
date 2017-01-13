@@ -19,20 +19,11 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
     @job.user_id = current_user.id
     @job.cont_present = 0
-    boatsall = Boat.all
-    boatsjob = @job.boats
-    @boatsavail = boatsall - boatsjob
-    total_cont = 0
-    (1..@boatsavail.length).each do |i|
-     if (params["#{i}"]["id"] == "1")
-       @boat = Boat.find(i)
-       total_cont += @boat.capacity
-       @job.boats.push(@boat)
-     end
-    end
-    @job.cont_present = total_cont
+    @total_cont = 0
+    add_boats_method
+    @job.cont_present = @total_cont
     if @job.save
-      redirect_to @job
+      redirect_to profiles_show_path
     else
       render :new
     end
@@ -46,7 +37,20 @@ class JobsController < ApplicationController
   end
 
   def update
-    total_cont = @job.cont_present
+    @total_cont = @job.cont_present
+    add_boats_method
+    @job.update(job_params)
+    @job.update(cont_present: @total_cont)
+    # redirect_to "edit_job_path"
+  end
+
+  def destroy
+    Job.find(params[:id]).destroy
+    flash[:success] = "order deleted"
+    redirect_to profiles_show_path
+  end
+
+  def add_boats_method
     boatsall = Boat.all
     boatsjob = @job.boats
     @boatsavail = boatsall - boatsjob
@@ -56,19 +60,10 @@ class JobsController < ApplicationController
        j = boat.id
        if (params["#{j}"]["id"] == "1")
          @boat = Boat.find(j)
-         total_cont += @boat.capacity
+         @total_cont += @boat.capacity
          @job.boats.push(@boat)
        end
     end
-    @job.update(job_params)
-    @job.update(cont_present: total_cont)
-    # redirect_to "edit_job_path"
-  end
-
-  def destroy
-    Job.find(params[:id]).destroy
-    flash[:success] = "order deleted"
-    redirect_to "profiles_show_path"
   end
 
   private

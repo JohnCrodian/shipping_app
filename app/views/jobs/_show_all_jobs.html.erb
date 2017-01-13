@@ -15,13 +15,7 @@
 			<br>
 			<a href="/jobs/<%= job.id %>/edit"><button>EDIT JOB</button></a>
 			<button><%= link_to "DELETE JOB", job, method: :delete, data: { confirm: "You sure?" } %></button> 
-			<button>
-				<%= link_to "Edit Job", edit_job_path %>
-			</button>
 		</div>
-		<%= form_for job do |f| %>
-		<%= f.select(:boats, Boat.all.collect {|b| [b.name, b.id]}) %>
-		<%= f.submit "Add Boat to Job" %>
 		<% end %>
-	<% end %>
+	
 </div>
