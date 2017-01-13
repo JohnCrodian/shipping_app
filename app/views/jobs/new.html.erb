@@ -1,5 +1,4 @@
-<h1>Jobs#new</h1>
-<p>Find me in app/views/jobs/new.html.erb</p>
+
 
 <h2>Add a new job</h2>
 
@@ -16,6 +15,9 @@
 
 		<%= f.hidden_field :user_id%>
 		
+		<%= f.label :jobname, value: "Job Name" %>
+		<%= f.text_field :jobname %><br>
+
 		<%= f.label :description, value: "Job Description" %>
 		<%= f.text_field :description %><br>
 
@@ -37,6 +39,19 @@
 		<%= f.select(:destination, options_for_select(cities)) %>
 		<br>
 
+		<h4> Available boats </h4>
+	  <% @boats.each do |boat| %>
+	    <div class="container">
+	      <div class="row">
+			    <div class="col-md-2"></div>
+			    <div class="col-md-3">
+			    	<h5>  <%= boat.name %> </h5>
+			    </div>
+			    <div class="col-md-2"></div>
+				  <%= check_box(boat.id, "id") %>
+			  </div>
+		  </div>
+		<% end %>
 		<%= f.submit "Add Job" %>
 
 	<% end %>
