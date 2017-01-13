@@ -20,7 +20,7 @@ class JobsController < ApplicationController
     @job.cont_present = 0
     @boats = Boat.all
     total_cont = 0
-    (1..@boatsavail.length).each do |i|
+    (1..@boats.length).each do |i|
      if (params["#{i}"]["id"] == "1")
        @boat = Boat.find(i)
        total_cont += @boat.capacity

@@ -11,9 +11,11 @@
 			<h4 class="boat-location">Containers Needed <%= @job.cont_needed %></h4>
 			<h4 class="boat-location">Containers Assigned <%= @job.cont_present %></h4>
 			<h4>Boats Assigned</h4>
-			<% @job.boats.each do |boat| %>
-			   <%= boat.name %> <%= boat.capacity %><br>
-			<% end %>
+			<div class="boat-list">
+				<% @job.boats.each do |boat| %>
+				   <%= boat.name %> <%= boat.capacity %><br>
+				<% end %>
+			</div>
 			<%= content_tag :div, id: 'tracker-boats', data: {trackers: @job.boats.to_json } do %>
 			<% end %>
 			<%= content_tag :div, id: 'tracker-job', data: {trackers: @job.to_json } do %>

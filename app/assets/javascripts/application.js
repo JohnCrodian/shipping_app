@@ -15,10 +15,20 @@
 //= require turbolinks
 //= require_tree .
 $(document).ready(function() {
+   $(".update-job-btn").on("click", function(event) {
    var boats = ($('#tracker-boats').data('trackers'));
-   var job = ($('#tracker-job').data('trackers'));   
+   var job = ($('#tracker-job').data('trackers')); 
+   var newdiv = $("<div></div>");
+   newdiv.addClass("new-boat-list"); 
+   for (var i = 0; i < boats.length; i++) {
+     var newtext = $("<p></p>");
+     newtext.innerHTML = boats[i].name;
+     newtext.appendTo(".new-boat-list");
+    } 
    console.log(boats);
    console.log(job);
+   $(".update-job-btn").replaceWith($(".new-boat-list"));
+   })
    // $("update-job-btn").on("ajax:complete", function(event) {
    //   $(event.target).hide();
    // $(event.target).prev.addClass("available").html("Available");
