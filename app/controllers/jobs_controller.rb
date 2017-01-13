@@ -20,6 +20,7 @@ class JobsController < ApplicationController
     @job.user_id = current_user.id
     @job.cont_present = 0
     @total_cont = 0
+    @boats = Boat.all
     add_boats_method
     @job.cont_present = @total_cont
     if @job.save

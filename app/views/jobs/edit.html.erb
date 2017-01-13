@@ -12,9 +12,9 @@
 			<h4 class="boat-location">Containers Assigned <%= @job.cont_present %></h4>
 			<h4>Boats Assigned</h4>
 			<div class="boat-list">
-			<% @job.boats.each do |boat| %>
-			   <%= boat.name %> <%= boat.capacity %><br>
-			<% end %>
+				<% @job.boats.each do |boat| %>
+				   <%= boat.name %> <%= boat.capacity %><br>
+				<% end %>
 			</div>
 			<%= content_tag :div, id: 'tracker-boats', data: {trackers: @job.boats.to_json } do %>
 			<% end %>
