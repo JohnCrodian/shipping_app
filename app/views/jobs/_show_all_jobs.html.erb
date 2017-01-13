@@ -2,10 +2,19 @@
 	<% @jobs.each do |job| %>
 		<div class="boat-card">
 			<h4><a href="/jobs/<%= job.id %>">Job Number: <%= job.id %></a></h4>
+			<h4>Job Name <%= job.jobname %> </h4>
 			<h4>Cost: <%= job.cost %></h4>
 			<h4>Containers Required: <%= job.cont_needed %></h4>
+			<h4>Containers Assigned: <%= job.cont_present %></h4>
 			<h4>Origin: <%= job.origin %></h4>
 			<h4>Destination: <%= job.destination %></h4>
+			<h4>Assigned Boats </h4>
+			 <% job.boats.each do |boat| %>
+			 <%= boat.name %>
+			 <% end %>
+			<br>
+			<a href="/jobs/<%= job.id %>/edit"><button>EDIT JOB</button></a>
+			<button><%= link_to "DELETE JOB", job, method: :delete, data: { confirm: "You sure?" } %></button> 
 		</div>
 	<% end %>
 </div>

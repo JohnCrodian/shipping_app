@@ -6,6 +6,13 @@
 			<h4 class="boat-location">Location: <%= boat.location %></h4>
 
 			<div class="boat-img"><%= image_tag boat.avatar.url :small %></div>
+			<button>
+				<%= link_to "Edit Boat", edit_boat_path(boat) %>
+					
+			</button>
+			<button>
+				<%= link_to "Delete Boat", boat, method: :delete, data: { confirm: "Are you sure?" } %>
+			</button>
 		</div>
 	<% end %>
 </div>

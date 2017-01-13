@@ -39,8 +39,10 @@ ActiveRecord::Schema.define(version: 20170112213018) do
     t.string   "destination"
     t.float    "cost"
     t.integer  "cont_needed"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "jobname"
+    t.integer  "cont_present"
   end
 
   create_table "users", force: :cascade do |t|
