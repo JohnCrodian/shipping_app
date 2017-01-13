@@ -3,6 +3,8 @@
 	<h2 class="boat-name">Boat Name: <%= @boat.name %></h2>
 	<h4 class="boat-capacity">Container Capacity: <%= @boat.capacity %></h4>
 	<h4 class="boat-location">Location: <%= @boat.location %></h4>
+
+	<div class="boat-img"><%= image_tag @boat.avatar.url %></div>
 </div>
 <button>
 <%= link_to "Edit Boat", edit_boat_path %>

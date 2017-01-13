@@ -15,6 +15,9 @@
 		<%= f.select(:location, options_for_select(cities)) %>
 		<br>
 
+	    <%= f.label :avatar %><br />
+	    <%= f.file_field :avatar %>
+
 		<%= f.submit "Save Changes" %>
 
 	<% end %>
