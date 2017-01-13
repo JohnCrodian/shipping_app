@@ -47,14 +47,15 @@
 
 				<%= f.label :origin, value: "Origin: " %><br>
 
-				<% cities = ["Houston", "New York", "Singapore", "Rotterdam", "Hamburg", "Rio de Janeiro", "Lagos", "Shanghai", "Tokyo", "London"] %>
+				<% origin_cities = [@job.origin, "Houston", "New York", "Singapore", "Rotterdam", "Hamburg", "Rio de Janeiro", "Lagos", "Shanghai", "Tokyo", "London"].uniq %>
+				<% destination_cities = [@job.destination, "Houston", "New York", "Singapore", "Rotterdam", "Hamburg", "Rio de Janeiro", "Lagos", "Shanghai", "Tokyo", "London"].uniq %>
 
-				<%= f.select(:origin, options_for_select(cities)) %>
+				<%= f.select(:origin, options_for_select(origin_cities)) %>
 				<br>
 
 				<%= f.label :destination, value: "Destination: " %><br>
 
-				<%= f.select(:destination, options_for_select(cities)) %>
+				<%= f.select(:destination, options_for_select(destination_cities)) %>
 				<br>
 
 				<h4> Available boats </h4>
